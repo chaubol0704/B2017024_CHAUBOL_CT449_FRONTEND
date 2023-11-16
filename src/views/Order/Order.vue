@@ -139,16 +139,16 @@ import jwt_decode from "jwt-decode";
       async deleteOrder(id){
           console.log(id.id)
           const response = await OrderService.delete(id.id);
-          // if (response.status == 'OK') {
-          //   this.$forceUpdate();
-          // }
+          if (response.status == 'OK') {
+            this.listOrders();
+          }
       },
       async updateAddress(id){
           const data = {address: this.address}
           console.log(id)
           const response = await OrderService.update(id,data);
           if (response.status == 'OK') {
-            this.$router.go(0);
+            this.listOrders();
             // console.log(response)
           }
       },

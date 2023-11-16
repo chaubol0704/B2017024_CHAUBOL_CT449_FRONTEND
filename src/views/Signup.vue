@@ -87,7 +87,11 @@ export default {
                     password: this.password,
                 };
 
-                await UserService.create(user)
+                const response = await UserService.create(user)
+                if (response.status == 'OK') {
+                    this.$router.push({ name: "Signin" });
+                    // console.log(response)
+                }
               
             } else {
                 // passwords are not matching
@@ -112,7 +116,7 @@ export default {
 }
 
 .btn-primary {
-    background-color: #f0c14b;
+    background-color: #190eec;
     color: black;
     border-color: #a88734 #9c7e31 #846a29;
     border-radius: 0;

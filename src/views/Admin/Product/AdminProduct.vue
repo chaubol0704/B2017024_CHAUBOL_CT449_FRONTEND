@@ -33,7 +33,7 @@
                                     <ul class="d-flex  gap-3 collapsed text-primary">
                                         <!-- @click="updateProduct(product._id)"  data-bs-toggle="modal" data-bs-target="#exampleModal"-->
                                         <li   type="button" @click="updateProduct(product._id) ">Sửa</li>
-                                        <li @click="deleteProduct(product._id) " >Xóa</li>
+                                        <li type="button" @click="deleteProduct(product._id) " >Xóa</li>
                                     </ul>
                                 </td>
                             </tr>

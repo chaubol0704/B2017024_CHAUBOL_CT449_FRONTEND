@@ -127,7 +127,7 @@ export default {
         async deleteItem(itemId) {
             const response = await CartService.delete(itemId);
             if (response.status == 'OK') {
-                this.$router.go(0);
+                this.listCartItems()
                 }
           
         },

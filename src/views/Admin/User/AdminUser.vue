@@ -6,7 +6,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered user" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Avatar</th>
@@ -27,9 +27,8 @@
                                             <td>{{ user.phone }}</td>
                                             <td>{{ user.address }}</td>    
                                             <td>
-                                                <ul class="d-flex   gap-2">
-                                                    <li @click="updateUser(user._id)">Sửa</li>
-                                                    <li @click="deleteUser(user._id)">Xóa</li>
+                                                <ul class="">
+                                                    <li type="button" @click="deleteUser(user._id)">Xóa</li>
                                                 </ul>
                                             </td>                                      
                                         </tr>
@@ -73,9 +72,10 @@ export default {
         async deleteUser(id) {
             console.log(id)
             const response = await UserService.delete(id);
-            // if (response.status == 'OK') {
-            //   this.$forceUpdate();
-            // }
+            if (response.status == 'OK') {
+            //   this.$router.push({ name: "AdminUser" });
+              this.getUser()
+            }
         },
         async updateUser(id) {
             this.$router.push({
@@ -99,5 +99,9 @@ export default {
 .avatar{
     width: 30px;
     height: 30px;
+}
+
+.user{
+    text-align: center;
 }
 </style>

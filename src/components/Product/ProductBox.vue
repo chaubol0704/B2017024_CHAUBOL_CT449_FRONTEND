@@ -3,14 +3,14 @@
         <div class="embed-responsive embed-responsive-16by9">
             <img class="card-img-top embed-responsive-item" :src="product.image" alt="Product Image" />
         </div>
-        <div class="card-body">
+        <div class="card-body d-flex gap-5">
             <router-link :to="{ name: 'ShowDetails', params: { id: product._id } }">
                 <h5 class="card-title">{{ product.name }}</h5>
             </router-link>
             <p class="card-text">{{ product.price }}<sup>đ</sup></p>
-            <p class="card-text font-italic" v-if="product">
+            <!-- <p class="card-text font-italic" v-if="product">
                 {{ product.description}}...
-            </p>
+            </p> -->
 
             
             <!-- <router-link id="edit-product" :to="{ name: 'EditProduct', params: { id: product.id } }"

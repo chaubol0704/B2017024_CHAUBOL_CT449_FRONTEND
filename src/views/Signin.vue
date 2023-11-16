@@ -45,6 +45,7 @@ export default {
             email: null,
             password: null,
             loading: null,
+            token: null
         };
     },
     methods: {
@@ -59,7 +60,9 @@ export default {
             const login = await UserService.login(user)
             console.log(login)
             localStorage.setItem("token", login.refresh_token);
+            this.$emit("fetchData");
             if(login.message == 'SUCCESS'){
+                this.token = localStorage.getItem("token");
                 this.$router.push({ name: "Home" });
             }
     
@@ -81,7 +84,7 @@ export default {
 }
 
 .btn-primary {
-    background-color: #f0c14b;
+    background-color: #190eec;
     color: black;
     border-color: #3449a8 #9c7e31 #846a29;
     border-radius: 0;

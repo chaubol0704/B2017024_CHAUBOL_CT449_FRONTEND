@@ -33,8 +33,8 @@
                             <!-- <option selected>Giá</option> -->
                             <option  value="all" >Tất cả</option>
                             <option  value="Tạ" >Tạ</option>
-                            <option  value="Máy massage">Máy massage</option>
-                            <option  value="Thiết bị máy">Thiết bị máy</option>
+                            <option  value="Ghế massage">Ghế massage</option>
+                            <option  value="Máy chạy bộ">Máy chạy bộ</option>
                             <option  value="Phụ kiện">Phụ kiện</option>
                         </select>
                     </div>
@@ -55,6 +55,23 @@
                     </ProductBox>
                 </div>
             </div>
+            <!-- <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                </li>
+                <li class="page-item" :page="1" @click="handleChange()"><a class="page-link" href="#" aria-current="page">1</a></li>
+                <li class="page-item" :page="2" @click="handleChange()"><a class="page-link" href="#">2</a></li>
+                <li class="page-item" :page="3" @click="handleChange()"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                </li>
+            </ul>
+            </nav> -->
         </div>
     </div>
 </template>
@@ -78,7 +95,8 @@ export default {
             searchText: "",
             product_size: 0,
             productList: null,
-            category: 'all'
+            category: 'all',
+            current_page: 1
         }
     },
 
@@ -87,11 +105,20 @@ export default {
         getAll() {
             this.productList = this.products
         },
+        onPageClick(event) {
+            const page = event.target.getAttribute('page');
+
+            // Chuyển sang trang được chọn
+            this.current_page = page;
+            this.getAll()
+        },
         async submitProduct(e){
             e.preventDefault();
             const filter = this.searchText
             const response = await  ProductService.getAll(filter);
+            
             if(response){
+                
                 this.productList = response
                 this.product_size = this.productList.data.length;
             }
@@ -101,6 +128,7 @@ export default {
         async handleChange(){
             const filter = null
             const response = await ProductService.getAll(filter,this.category);
+            console.log(response)
             if (response) {
                 this.productList = response
                 this.product_size = this.productList.data.length;
@@ -108,11 +136,13 @@ export default {
 
             // this.searchText = ""
             console.log(this.category);
-        }
+        },
+
     },
     mounted() {
-        this.getAll()
         this.token = localStorage.getItem("token");
+        this.getAll()
+        
         this.product_size = this.products.total;
         // console.log(this.product_size)
         console.log(this.products.data)
@@ -121,6 +151,9 @@ export default {
         
         // this.product_size = Math.min(8, this.product_size);
     },
+    created(){
+        this.token = localStorage.getItem("token");
+    }
 
 }
 </script>

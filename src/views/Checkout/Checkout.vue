@@ -12,12 +12,12 @@
                             <div class="section-title">
                                 <h3 class="title">Địa chỉ thanh toán và nhận hàng</h3>
                             </div>
-                            <div class="form-group mb-3">
+                            <!-- <div class="form-group mb-3">
                                 <input class="input"  type="text" name="ten" placeholder="Tên" >
                             </div>
                             <div class="form-group mb-3">
                                 <input class="input"  type="tel" name="sdt" placeholder="Số điện thoại">
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <input class="input"  type="text" name="diaChi" placeholder="Địa chỉ giao hàng" v-model="address" required>
                             </div>

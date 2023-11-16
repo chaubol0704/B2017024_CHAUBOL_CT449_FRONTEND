@@ -38,7 +38,11 @@ export default {
        async updateUser(data) {
             try {
                 console.log(this.infor)
-                await UserService.update(this.infor.data._id, data);
+                const re = await UserService.update(this.infor.data._id, data);
+                if (re.status == 'OK') {
+                    // this.token = localStorage.getItem("token");
+                    this.$router.push({ name: "User" });
+                }
 
             } catch (error) {
                 console.log(error);

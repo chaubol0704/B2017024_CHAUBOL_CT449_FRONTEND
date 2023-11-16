@@ -6,6 +6,9 @@ class ProductService {
     async getAll(filter,category) {
         return (await this.api.get("/get-all", { params: { filter: filter, category:category } })).data;
     }
+    // async getAll(page, filter, category) {
+    //     return (await this.api.get("/get-all", { params: { page: page, filter: filter, category: category } })).data;
+    // }
     async create(data) {
         return (await this.api.post("/create", data)).data;
     }

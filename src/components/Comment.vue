@@ -1,211 +1,120 @@
 <template>
-    <!-- Product tab -->
-    <div class="col-md-12">
-        <div id="product-tab">
-            <!-- product tab nav -->
-            <ul class="tab-nav">
-                <li class="active"><a data-toggle="tab" href="#tab1">Chi tiết</a></li>
-                <li><a data-toggle="tab" href="#tab2">Đánh giá ({{ COUNT }})</a></li>
-            </ul>
-            <!-- /product tab nav -->
-
-            <!-- product tab content -->
-            <div class="tab-content">
-                <!-- tab1  -->
-                <div id="tab1" class="tab-pane fade in active">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p>Màn hình: {{ data.manHinh }}</p>
-                            <p>Camera trước: {{ data.cameraTruoc }}</p>
-                            <p>Camera sau: {{ data.cameraSau }}</p>
-                            <p>CPU: {{ data.cpu }}</p>
-                            <p>RAM: {{ data.ram }}</p>
-                            <p>Bộ nhớ: {{ data.rom }}</p>
-                            <P>Thẻ nhớ: {{ data.theNho }}</P>
-                            <p>Sim: {{ data.sim }}</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- /tab1  -->
-
-                <!-- tab2  -->
-                <div id="tab2" class="tab-pane fade in">
-                    <div class="row">
-                        <!-- Rating -->
-                        <div class="col-md-3">
-                            <div id="rating">
-                                <div class="rating-avg">
-                                    <span>4.5</span>
-                                    <div class="rating-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                                <ul class="rating">
-                                    <li>
-                                        <div class="rating-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="rating-progress">
-                                            <div style="width: 80%;"></div>
-                                        </div>
-                                        <span class="sum">3</span>
-                                    </li>
-                                    <li>
-                                        <div class="rating-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="rating-progress">
-                                            <div style="width: 60%;"></div>
-                                        </div>
-                                        <span class="sum">2</span>
-                                    </li>
-                                    <li>
-                                        <div class="rating-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="rating-progress">
-                                            <div></div>
-                                        </div>
-                                        <span class="sum">0</span>
-                                    </li>
-                                    <li>
-                                        <div class="rating-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="rating-progress">
-                                            <div></div>
-                                        </div>
-                                        <span class="sum">0</span>
-                                    </li>
-                                    <li>
-                                        <div class="rating-stars">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="rating-progress">
-                                            <div></div>
-                                        </div>
-                                        <span class="sum">0</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /Rating -->
-
-                        <!-- Reviews -->
-                        <div class="col-md-6">
-
-                            <div id="reviews">
-                                {{ #if COMMENTS }}
-                                {{ #each COMMENTS }}
-                                <ul class="reviews" id="comment">
-                                    <li>
-                                        <div class="review-heading">
-                                            <h5 class="name">{{ this.ten }}</h5>
-                                            <p class="date">{{ this.dateTime }}</p>
-                                            <div class="review-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o empty"></i>
-                                            </div>
-                                        </div>
-                                        <div class="review-body">
-                                            <p>{{ this.nhanXet }}</p>
-                                        </div>
-                                    </li>
-
-                                </ul>
-                                {{ /each}}
-                                {{ /if}}
-                            </div>
-                        </div>
-                        <!-- /Reviews -->
-
-                        <!-- Review Form -->
-                        <div class="col-md-3">
-                            <div id="review-form">
-
-
-
-                                <form class="review-form" method="POST" action="/comment/add/{{data._id}}">
-                                    {{ #if user }}
-                                    <textarea class="input" name="nhanXet" placeholder="Đánh giá"></textarea>
-                                    <div class="input-rating">
-                                        <span>Xếp hạng: </span>
-                                        <div class="stars">
-                                            <input id="star5" name="rating" value="5" type="radio"><label
-                                                for="star5"></label>
-                                            <input id="star4" name="rating" value="4" type="radio"><label
-                                                for="star4"></label>
-                                            <input id="star3" name="rating" value="3" type="radio"><label
-                                                for="star3"></label>
-                                            <input id="star2" name="rating" value="2" type="radio"><label
-                                                for="star2"></label>
-                                            <input id="star1" name="rating" value="1" type="radio"><label
-                                                for="star1"></label>
-                                        </div>
-                                    </div>
-                                    <button class="primary-btn">Đánh giá</button>
-                                    {{else }}
-                                    <input class="input" type="text" name="ten" placeholder="Tên của bạn">
-                                    <textarea class="input" name="nhanXet" placeholder="Đánh giá"></textarea>
-                                    <div class="input-rating">
-                                        <span>Xếp hạng: </span>
-                                        <div class="stars">
-                                            <input id="star5" name="rating" value="5" type="radio"><label
-                                                for="star5"></label>
-                                            <input id="star4" name="rating" value="4" type="radio"><label
-                                                for="star4"></label>
-                                            <input id="star3" name="rating" value="3" type="radio"><label
-                                                for="star3"></label>
-                                            <input id="star2" name="rating" value="2" type="radio"><label
-                                                for="star2"></label>
-                                            <input id="star1" name="rating" value="1" type="radio"><label
-                                                for="star1"></label>
-                                        </div>
-                                    </div>
-                                    <button class="primary-btn">Đánh giá</button>
-                                    {{ /if}}
-                                </form>
-                            </div>
-                        </div>
-                        <!-- /Review Form -->
-                    </div>
-                </div>
-                <!-- /tab2  -->
+  <div>
+    <h2>Bình luận sản phẩm</h2>
+    
+    <div class="d-flex gap-5 p-10" v-if="token">
+        <div class="d-flex justify-items-center ">
+                <img :src="author.avatar" class="avatar">
+                <p>{{ author.name }}</p>
             </div>
-            <!-- /product tab content  -->
+        <div class="input-group  m-2">                       
+            <input  type="text" v-model="status" /> 
+            <button @click="onSubmit" class="bg-info">Gửi</button>                         
         </div>
     </div>
-<!-- /product tab -->
-</div>
-<!-- /row -->
-</div>
-<!-- /container -->
-</div>
-<!-- /SECTION --></template>
+
+    <div class="border comment card w-75 ">
+      <h3 class="text-center">Danh sách bình luận</h3>
+      <ul class="card-body">
+        <li v-for="comment in comments" :key="comment._id" class="d-flex gap-4 comment-item">
+          <div class="d-flex justify-items-center ">
+                  <div class="items-center">
+                      <img :src="comment.user_id.avatar" class="avatar">
+                  </div>
+                  
+                  <p class="text-center">{{ comment.user_id.name }}</p>
+              </div>
+          <p class="fs-6 fst-italic">{{ comment.status }}</p>
+          <!-- <small>{{ comment.created_at }}</small> -->
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+</template>
+
+<script>
+import ProductService from "@/services/product.service";
+import CommentService from "@/services/comment.service";
+import UserService from "@/services/user.service";
+import jwt_decode from "jwt-decode";
+
+export default {
+  data() {
+    return {
+      comments: [],
+      token: null,
+      author: null,
+      status: '',
+    };
+  },
+  props: {
+    product: { type: Object, required: true }
+  },
+  methods: {
+    async onSubmit() {
+      
+      const newcomment = 
+      {
+        user_id: this.author._id,
+        product_id: this.product._id,
+        status: this.status
+      };
+      const response = await CommentService.create(newcomment)
+      if(response){
+        this.status = '';
+        this.getComment();
+      }
+      
+    },
+    async getComment() {
+      try {
+        if(this.product){
+          const id = this.product._id
+          const response = await CommentService.get(id)
+          this.comments = response.data
+          console.log(this.comments)
+        }
+        
+      } catch (error) {
+        console.log(error);
+
+      }
+
+    },
+    async showUser(){
+      const user_id = jwt_decode(this.token);
+      console.log(this.product)
+      try {
+        const response = await UserService.get(user_id.id);
+        this.author = response.data
+        // console.log(this.author)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  },
+  mounted() {
+    this.token = localStorage.getItem("token");
+    this.showUser();
+    this.getComment()
+  },
+};
+</script>
+
+<style scoped>
+.avatar {
+    width: 40px;
+    height: 40px;
+
+}
+.comment{
+  margin: 10px;
+  padding-block: 10px;
+  left: 10px;
+}
+.comment-item{
+  margin: 10px;
+}
+</style>

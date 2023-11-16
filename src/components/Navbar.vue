@@ -1,10 +1,26 @@
 <template>
     <nav class="navbar gap-5 ">
-
+        
         <router-link class="navbar-brand" :to="{ name: 'Home' }">
             <img id="logo" class="my-image" src="../assets/logo_gym.png" />
         </router-link>
-
+        <ul class="d-flex gap-5">
+          <li>
+            <router-link class="navbar-brand" :to="{ name: 'Home' }">
+              Trang chủ
+          </router-link>
+          </li>
+          <li>
+              <router-link class="navbar-brand" :to="{ name: 'About' }">
+                Giới thiệu
+            </router-link>
+            </li>
+          <li>
+              <router-link class="navbar-brand" :to="{ name: 'Contact' }">
+                Liên hệ
+            </router-link>
+            </li>
+        </ul>
         <div class="">
           <ul class="nav-menu">
               <li v-if="!token" class="nav-item" id="button">
@@ -14,7 +30,7 @@
               </li> 
               <li v-if="isAdmin" class="nav-item" id="button">
                    <a type="button" >
-                        <router-link class="text-black"  :to="{ name: 'Admin' }">Quản Lý</router-link>
+                        <router-link class="text-black"  :to="{ name: 'AdminUser' }">Quản Lý</router-link>
                     </a>
                 </li> 
        
@@ -74,6 +90,7 @@ export default {
         signout() {
             localStorage.removeItem("token");
             this.token = null;
+            this.$emit("fetchData");
             this.$emit("resetCartCount");
             this.$router.push({ name: "Home" });
         

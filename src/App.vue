@@ -81,11 +81,11 @@ export default {
       <Navbar
         :cartCount="cartCount"
         @resetCartCount="resetCartCount"
-        
+        v-if="!['Signup', 'Signin'].includes($route.name)"
       />
       <!-- v-if="!['Signup', 'Signin'].includes($route.name)" -->
       <div>
-          <router-view v-if="products" :products="products"/>
+          <router-view v-if="products" :products="products" @fetchData="fetchData" @resetCartCount="resetCartCount"/>
       </div>
       
       <Footer></Footer>

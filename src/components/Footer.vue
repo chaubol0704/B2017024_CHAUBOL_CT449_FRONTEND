@@ -3,11 +3,24 @@
         <div class="container pt-5">
             <div class="row">
                 <div class="col-md-3 col-6">
+                    
                     <ul style="list-style-type: none">
-                        <li class="text-light font-weight-bold pb-2">Get to Know Us</li>
-                        <li><a class="footer-link font-weight-light" href="#">About Us</a></li>
-                        <li><a class="footer-link font-weight-light" href="#">Android App</a><br></li>
-                        <li><a class="footer-link font-weight-light" href="#">iOS App</a><br></li>
+                        <li class="text-light font-weight-bold">Connect With Us</li>
+                        <li class="footer-link font-weight-light">
+                            <router-link class="navbar-brand" :to="{ name: 'Home' }">
+                            Trang chủ
+                        </router-link>
+                        </li>
+                        <li class="footer-link font-weight-light">
+                            <router-link class="navbar-brand" :to="{ name: 'About' }">
+                                Giới thiệu
+                            </router-link>
+                            </li>
+                        <li class="footer-link font-weight-light">
+                            <router-link class="navbar-brand" :to="{ name: 'Contact' }">
+                                Liên hệ
+                            </router-link>
+                            </li>
                     </ul>
                 </div>
 
