@@ -2,7 +2,7 @@
   <div class="container-fluid m-3 align-self-center">
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Quản lý đơn hàng</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Đơn hàng đang chờ duyệt</h6>
         <!-- <a type="button" class="addproduct" @click="addProduct">AddOrder</a> -->
       </div>
       <div class="card-body">
@@ -21,7 +21,7 @@
                 <th>Ngày đặt hàng</th>
                 <th>Tổng chi phí</th>
                 <th>Danh sách mặt hàng</th>
-                <!-- <th>Duyệt đơn hàng</th> -->
+                <th>Duyệt đơn hàng</th>
               </tr>
             </thead>
             <tbody>
@@ -38,13 +38,13 @@
                 >
                   Danh sách mặt hàng
                 </td>
-                <!-- <td @click="check(order._id)">
-                  <ul class="d-flex gap-3 collapsed text-primary">
+                <td @click="check(order._id)">
+                  <!-- <ul class="d-flex gap-3 collapsed text-primary">
                     <li type="button" @click="updateProduct(order._id)">Sửa</li>
                     <li @click="deleteProduct(order._id)">Xóa</li>
-                  </ul>
+                  </ul> -->
                   <a href="#" type="button">Xác nhận</a>
-                </td> -->
+                </td>
               </tr>
             </tbody>
           </table>
@@ -72,7 +72,7 @@ export default {
     async getProduct() {
       // const user_id = jwt_decode(this.token);
       try {
-        const data = true
+        const data = false
         const response = await OrderService.getAll(data);
         this.orderList = response.data;
         console.log(response);

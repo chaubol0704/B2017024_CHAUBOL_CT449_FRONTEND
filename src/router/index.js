@@ -16,6 +16,7 @@ import AdminUser from '@/views/Admin/User/AdminUser.vue'
 import AdminProduct from '@/views/Admin/Product/AdminProduct.vue'
 import AddProduct from '@/views/Admin/Product/AddProduct.vue'
 import AdminOrder from '@/views/Admin/Order/AdminOrder.vue'
+import AdminOrderCheck from '@/views/Admin/Order/AdminOrderCheck.vue'
 import EditOrder from '@/views/Admin/Order/EditOrder.vue'
 import DetailOrder from '@/views/Admin/Order/DetailOrder.vue'
 const routes = [
@@ -109,6 +110,11 @@ const routes = [
                 path: 'order',
                 name: 'AdminOrder',
                 component: AdminOrder
+            },
+            {
+                path: 'ordercheck',
+                name: 'AdminOrderCheck',
+                component: AdminOrderCheck
             },
             // {
             //     path: 'order/:id',

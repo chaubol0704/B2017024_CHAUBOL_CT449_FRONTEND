@@ -34,7 +34,7 @@
                     
                 </div>
 
-                <div class="features pt-3">
+                <!-- <div class="features pt-3">
                     <h5><strong>Features</strong></h5>
                     <ul>
                         <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
@@ -43,7 +43,7 @@
                         <li>molestias ipsum ab, ipsa consectetur laboriosam soluta et</li>
                         <li>ut doloremque dolore corrupti, architecto iusto beatae.</li>
                     </ul>
-                </div>
+                </div> -->
 
                 <!-- <button id="wishlist-button" class="btn mr-3 p-1 py-0"
                     :class="{ product_added_wishlist: isAddedToWishlist }" @click="addToWishList(this.id)">

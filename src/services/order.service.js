@@ -3,8 +3,8 @@ class OrderService {
     constructor(baseUrl = "/api/order") {
         this.api = createApiClient(baseUrl);
     }
-    async getAll() {
-        return (await this.api.get("/get-all")).data;
+    async getAll(data) {
+        return (await this.api.get("/get-all", { params: { data: data } })).data;
     }
     async create(data) {
         return (await this.api.post("/create", data)).data;
